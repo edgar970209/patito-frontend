@@ -11,7 +11,6 @@ import { AlertCircle, Minus, Package, Plus, Search, ShoppingCart } from 'lucide-
 export const ProductSearch = ({ tiendaId }) => {
     const dispatch = useDispatch();
     const currentOrder = useSelector((state) => state.order.currentOrder);
-    console.log(currentOrder);
     
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedHawa, setSelectedHawa] = useState([]);
@@ -26,8 +25,7 @@ export const ProductSearch = ({ tiendaId }) => {
     const { data: selectedProduct, isLoading: isLoadingProduct } = useProduct(
         selectedHawa
     );
-    
-    console.log(selectedProduct);
+
     
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);

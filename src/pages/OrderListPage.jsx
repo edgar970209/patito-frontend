@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Calendar, CheckCircle, Eye, Filter, Package, Plus, Search, XCircle } from 'lucide-react';
 import { StatusBadge } from '../components/common/StatusBadge';
 import { LoadingSpinner } from '../components/common/LoadingSpinner'
+import { OrderStatusModal } from '../components/orders/OrderStatusModal';
 
 
 export const OrderListPage = () => {
@@ -14,6 +15,8 @@ export const OrderListPage = () => {
     const filters = useSelector((state) => state.ui.filters);
     const [searchTerm, setSearchTerm] = useState('');
     const [showFilters, setShowFilters] = useState(false);
+    const [orderSelected, setOrderSelected] = useState();
+    const [showModalEstatus, setShowModalEstatus] = useState(false);
 
     const { data: orders = [], isLoading, error } = useOrders(filters);
     
@@ -76,6 +79,10 @@ export const OrderListPage = () => {
     //     }
     // };
 
+    const handleStatausChange = (order) => {
+        setOrderSelected(order);
+        setShowModalEstatus(true);
+    }
     
 
 
@@ -285,7 +292,9 @@ export const OrderListPage = () => {
                                             ${order.totalAmount?.toLocaleString()}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <StatusBadge status={order.status} />
+                                            <button className="cursor-pointer" onClick={ () => handleStatausChange(order)}>
+                                                <StatusBadge status={order.status} />
+                                            </button>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                                             <Link
@@ -336,6 +345,20 @@ export const OrderListPage = () => {
                     </p>
                 </div>
             )}
+
+
+            {
+                showModalEstatus && orderSelected && (
+                    <OrderStatusModal 
+                        order={ orderSelected }
+                        isOpen={showModalEstatus}
+                        onClose={() => setShowModalEstatus(false)}
+                        onSubmit={ updateStatusMutation.mutateAsync }
+                        isLoading={ updateStatusMutation.isLoading }
+                    
+                    />
+                )
+            }
         </div>
     );
 }

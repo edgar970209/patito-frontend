@@ -91,13 +91,13 @@ export const useUpdateOrderStatus = () => {
     const dispatch = useDispatch();
 
     return useMutation({
-        mutationFn: ({ hawaId, statusUpdate }) => orderService.updateOrderStatus(hawaId, statusUpdate),
+        mutationFn: (statusUpdate) => orderService.updateOrderStatus(statusUpdate),
         onSuccess: (data, variables) => {
             queryClient.invalidateQueries(['orders']);
             queryClient.invalidateQueries(['order', variables.id]);
             dispatch(updateOrderStatus({
                 id: variables.id,
-                estatus: variables.statusUpdate.estatus || variables.statusUpdate.status
+                estatus: variables.statusUpdate?.estatus
             }));
             dispatch(addNotification({
                 type: 'success',

@@ -28,8 +28,12 @@ export const orderService = {
     },
 
     // Actualizar orden por ID basado en status
-    updateOrderStatus: async (orderId, statusUpdate) => {
-        const response = await apiClient.put(`/orders/${orderId}/status`, statusUpdate);
+    updateOrderStatus: async (statusUpdate) => {
+        
+        const response = await apiClient.put(`/orders/${statusUpdate.id}/status`, {
+            status: statusUpdate.OrderStatus,
+            reason: statusUpdate.reason
+        });
         return response.data;
     },
 
