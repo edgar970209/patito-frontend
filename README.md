@@ -78,7 +78,17 @@ npm install
 
 3. **Configurar variables de entorno**
 ```bash
-cp .env.example .env
+crear archivo de .env y agregar esto
+# URL base de la API del backend requerido
+VITE_API_BASE_URL=http://localhost:8080/api
+
+# Configuración de desarrollo opcional
+VITE_APP_NAME="Tiendas Patito"
+VITE_APP_VERSION="1.0.0"
+
+# Configuración de React Query opcional
+VITE_QUERY_STALE_TIME=300000
+VITE_QUERY_CACHE_TIME=600000
 # Editar .env con la configuración correcta
 ```
 
@@ -87,41 +97,7 @@ cp .env.example .env
 npm run dev
 ```
 
-## 🔧 Configuración
 
-### Variables de Entorno
-
-```env
-# API Backend
-VITE_API_BASE_URL=http://localhost:3001/api
-
-# Configuración de la aplicación
-VITE_APP_NAME="Tiendas Patito"
-VITE_APP_VERSION="1.0.0"
-
-# React Query
-VITE_QUERY_STALE_TIME=300000
-VITE_QUERY_CACHE_TIME=600000
-
-# Debug
-VITE_DEBUG_MODE=true
-VITE_SHOW_REACT_QUERY_DEVTOOLS=true
-```
-
-### Estructura de la API
-
-El frontend espera que el backend tenga los siguientes endpoints:
-
-```
-GET    /api/productos/:hawa?tiendaId=:id     # Buscar producto por HAWA
-GET    /api/productos/buscar?q=:query        # Buscar productos
-GET    /api/inventario/:hawa?tiendaId=:id    # Verificar inventario
-POST   /api/pedidos                         # Crear pedido
-GET    /api/pedidos                         # Listar pedidos
-GET    /api/pedidos/:id                     # Obtener pedido
-PATCH  /api/pedidos/:id/estatus             # Actualizar estado
-PATCH  /api/pedidos/:id/cancelar            # Cancelar pedido
-```
 
 ## 🏃‍♂️ Scripts Disponibles
 
@@ -141,6 +117,8 @@ npm run test:ui      # Tests con interfaz
 - **CreateOrderPage**: Proceso de creación de pedidos
 - **OrdersListPage**: Lista y gestión de pedidos
 - **OrderDetailPage**: Detalle completo del pedido
+- **RegisterPage**: Registrar un nuevo usuario
+- **LoginPage**: Login para ingresar al sistema
 
 ### 🧩 Componentes
 - **Layout**: Estructura principal con navegación
@@ -210,31 +188,13 @@ cancelado → [final] ❌
 - **Headers de auditoría** en todas las peticiones
 - **Manejo seguro** de datos sensibles
 
-## 🧪 Testing
 
-```bash
-# Ejecutar todos los tests
-npm run test
-
-# Tests con interfaz gráfica
-npm run test:ui
-
-# Tests con coverage
-npm run test -- --coverage
-```
 
 ## 🚀 Deployment
 
 ### Build de Producción
 ```bash
 npm run build
-```
-
-### Variables de Producción
-```env
-VITE_API_BASE_URL=https://api.tiendas-patito.com/api
-VITE_DEBUG_MODE=false
-VITE_SHOW_REACT_QUERY_DEVTOOLS=false
 ```
 
 ## 🤝 Contribución
