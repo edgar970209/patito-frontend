@@ -109,240 +109,240 @@ export const InventoryPage = () => {
 
     return (
         <div className="space-y-6">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <div>
-                <h1 className="text-2xl font-bold text-gray-900">Gestión de Inventario</h1>
-                <p className="text-gray-600 mt-1">
-                    Administra el inventario de productos y controla el stock
-                </p>
-            </div>
-            <button
-                onClick={handleCreateProduct}
-                className="mt-4 sm:mt-0 inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-                <Plus className="w-4 h-4 mr-2" />
-                Agregar Producto
-            </button>
-        </div>
-
-        {/* Estadísticas */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {[
-            { 
-                label: 'Total Productos', 
-                value: stats.total, 
-                icon: Package, 
-                color: 'text-blue-600 bg-blue-100' 
-            },
-            { 
-                label: 'Bajo Stock', 
-                value: stats.lowStock, 
-                icon: AlertTriangle, 
-                color: 'text-yellow-600 bg-yellow-100' 
-            },
-            { 
-                label: 'Agotados', 
-                value: stats.outOfStock, 
-                icon: AlertTriangle, 
-                color: 'text-red-600 bg-red-100' 
-            },
-            { 
-                label: 'Valor Total', 
-                value: `$${stats.totalValue?.toLocaleString()}`, 
-                icon: TrendingUp, 
-                color: 'text-green-600 bg-green-100' 
-            }
-            ].map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                    <div key={index} className="bg-white rounded-lg shadow p-4">
-                    <div className="flex items-center">
-                        <div className={`p-2 rounded-lg ${stat.color}`}>
-                        <Icon className="w-5 h-5" />
-                        </div>
-                        <div className="ml-4">
-                        <p className="text-sm text-gray-600">{stat.label}</p>
-                        <p className="text-xl font-semibold text-gray-900">{stat.value}</p>
-                        </div>
-                    </div>
-                    </div>
-                );
-            })}
-        </div>
-
-        {/* Filtros y búsqueda */}
-        <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0 lg:space-x-4">
-                {/* Búsqueda */}
-                <div className="relative flex-1 max-w-md">
-                    <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                    <input
-                        type="text"
-                        placeholder="Buscar por HAWA, nombre o descripción..."
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
+            {/* Header */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                    <h1 className="text-2xl font-bold text-gray-900">Gestión de Inventario</h1>
+                    <p className="text-gray-600 mt-1">
+                        Administra el inventario de productos y controla el stock
+                    </p>
                 </div>
+                <button
+                    onClick={handleCreateProduct}
+                    className="mt-4 sm:mt-0 inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    <Plus className="w-4 h-4 mr-2" />
+                    Agregar Producto
+                </button>
+            </div>
 
-                {/* Filtros */}
-                <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-2">
-                        <Filter className="w-4 h-4 text-gray-400" />
-                        <select
-                            value={filter}
-                            onChange={(e) => setFilter(e.target.value)}
-                            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        >
-                            <option value="all">Todos los productos</option>
-                            <option value="low-stock">Bajo stock</option>
-                            <option value="out-of-stock">Agotados</option>
-                        </select>
+            {/* Estadísticas */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                {[
+                { 
+                    label: 'Total Productos', 
+                    value: stats.total, 
+                    icon: Package, 
+                    color: 'text-blue-600 bg-blue-100' 
+                },
+                { 
+                    label: 'Bajo Stock', 
+                    value: stats.lowStock, 
+                    icon: AlertTriangle, 
+                    color: 'text-yellow-600 bg-yellow-100' 
+                },
+                { 
+                    label: 'Agotados', 
+                    value: stats.outOfStock, 
+                    icon: AlertTriangle, 
+                    color: 'text-red-600 bg-red-100' 
+                },
+                { 
+                    label: 'Valor Total', 
+                    value: `$${stats.totalValue?.toLocaleString()}`, 
+                    icon: TrendingUp, 
+                    color: 'text-green-600 bg-green-100' 
+                }
+                ].map((stat, index) => {
+                    const Icon = stat.icon;
+                    return (
+                        <div key={index} className="bg-white rounded-lg shadow p-4">
+                            <div className="flex items-center">
+                                <div className={`p-2 rounded-lg ${stat.color}`}>
+                                <Icon className="w-5 h-5" />
+                                </div>
+                                <div className="ml-4">
+                                <p className="text-sm text-gray-600">{stat.label}</p>
+                                <p className="text-xl font-semibold text-gray-900">{stat.value}</p>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+
+            {/* Filtros y búsqueda */}
+            <div className="bg-white rounded-lg shadow p-6">
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0 lg:space-x-4">
+                    {/* Búsqueda */}
+                    <div className="relative flex-1 max-w-md">
+                        <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+                        <input
+                            type="text"
+                            placeholder="Buscar por HAWA, nombre o descripción..."
+                            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </div>
+
+                    {/* Filtros */}
+                    <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-2">
+                            <Filter className="w-4 h-4 text-gray-400" />
+                            <select
+                                value={filter}
+                                onChange={(e) => setFilter(e.target.value)}
+                                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+                                <option value="all">Todos los productos</option>
+                                <option value="low-stock">Bajo stock</option>
+                                <option value="out-of-stock">Agotados</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        {/* Lista de productos */}
-        <div className="bg-white rounded-lg shadow overflow-hidden">
-            {filteredProducts.length === 0 ? (
-            <div className="text-center py-12">
-                <Package className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600">
-                    {products.length === 0 ? 'No hay productos registrados' : 'No se encontraron productos'}
-                </p>
-            </div>
-            ) : (
-            <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                    <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Producto
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            HAWA
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Precio
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Stock
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Estado
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Acciones
-                        </th>
-                    </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                    {filteredProducts.map((product) => {
-                        const stockStatus = getStockStatus(product);
-                        
-                        return (
-                            <tr key={product.hawaId} className="hover:bg-gray-50">
-                                <td className="px-6 py-4">
-                                    <div>
+            {/* Lista de productos */}
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+                {filteredProducts.length === 0 ? (
+                <div className="text-center py-12">
+                    <Package className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                    <p className="text-gray-600">
+                        {products.length === 0 ? 'No hay productos registrados' : 'No se encontraron productos'}
+                    </p>
+                </div>
+                ) : (
+                <div className="overflow-x-auto">
+                    <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                        <tr>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Producto
+                            </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                HAWA
+                            </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Precio
+                            </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Stock
+                            </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Estado
+                            </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Acciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                        {filteredProducts.map((product) => {
+                            const stockStatus = getStockStatus(product);
+                            
+                            return (
+                                <tr key={product.hawaId} className="hover:bg-gray-50">
+                                    <td className="px-6 py-4">
+                                        <div>
+                                            <div className="text-sm font-medium text-gray-900">
+                                                {product.productName}
+                                            </div>
+                                            <div className="text-sm text-gray-500">
+                                                {product.descripcion}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-900">
+                                        {product.hawaId}
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap">
+                                        <div className="text-sm text-gray-900">
+                                            ${product.listPrice?.toLocaleString()}
+                                        </div>
+                                        {product.descuento > 0 && (
+                                            <div className="text-sm text-green-600">
+                                                Desc: {product.discount}%
+                                            </div>
+                                        )}
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap">
                                         <div className="text-sm font-medium text-gray-900">
-                                            {product.productName}
+                                            {product.stockQuantity} unidades
                                         </div>
                                         <div className="text-sm text-gray-500">
-                                            {product.descripcion}
+                                            Valor: ${(product.listPrice * product.stockQuantity)?.toLocaleString()}
                                         </div>
-                                    </div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-900">
-                                    {product.hawaId}
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm text-gray-900">
-                                        ${product.listPrice?.toLocaleString()}
-                                    </div>
-                                    {product.descuento > 0 && (
-                                        <div className="text-sm text-green-600">
-                                            Desc: {product.discount}%
-                                        </div>
-                                    )}
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm font-medium text-gray-900">
-                                        {product.stockQuantity} unidades
-                                    </div>
-                                    <div className="text-sm text-gray-500">
-                                        Valor: ${(product.listPrice * product.stockQuantity)?.toLocaleString()}
-                                    </div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${stockStatus.color}`}>
-                                        {stockStatus.label}
-                                    </span>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                                    <button
-                                        onClick={() => handleEditProduct(product)}
-                                        className="text-blue-600 hover:text-blue-900 inline-flex items-center"
-                                    >
-                                    <Edit className="w-4 h-4 mr-1" />
-                                        Editar
-                                    </button>
-                                    
-                                    <button
-                                        onClick={() => handleStockAdjustment(product, 'increment')}
-                                        className="text-green-600 hover:text-green-900 inline-flex items-center"
-                                    >
-                                        <TrendingUp className="w-4 h-4 mr-1" />
-                                        +Stock
-                                    </button>
-                                    
-                                    <button
-                                        onClick={() => handleStockAdjustment(product, 'decrement')}
-                                        className="text-orange-600 hover:text-orange-900 inline-flex items-center"
-                                    >
-                                        <TrendingDown className="w-4 h-4 mr-1" />
-                                        -Stock
-                                    </button>
-                                    
-                                    <button
-                                        onClick={() => handleDeleteProduct(product.hawa)}
-                                        className="text-red-600 hover:text-red-900 inline-flex items-center"
-                                    >
-                                        <Trash2 className="w-4 h-4 mr-1" />
-                                        Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-                </table>
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap">
+                                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${stockStatus.color}`}>
+                                            {stockStatus.label}
+                                        </span>
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                        <button
+                                            onClick={() => handleEditProduct(product)}
+                                            className="text-blue-600 hover:text-blue-900 inline-flex items-center"
+                                        >
+                                        <Edit className="w-4 h-4 mr-1" />
+                                            Editar
+                                        </button>
+                                        
+                                        <button
+                                            onClick={() => handleStockAdjustment(product, 'increment')}
+                                            className="text-green-600 hover:text-green-900 inline-flex items-center"
+                                        >
+                                            <TrendingUp className="w-4 h-4 mr-1" />
+                                            +Stock
+                                        </button>
+                                        
+                                        <button
+                                            onClick={() => handleStockAdjustment(product, 'decrement')}
+                                            className="text-orange-600 hover:text-orange-900 inline-flex items-center"
+                                        >
+                                            <TrendingDown className="w-4 h-4 mr-1" />
+                                            -Stock
+                                        </button>
+                                        
+                                        <button
+                                            onClick={() => handleDeleteProduct(product.hawaId)}
+                                            className="text-red-600 hover:text-red-900 inline-flex items-center"
+                                        >
+                                            <Trash2 className="w-4 h-4 mr-1" />
+                                            Eliminar
+                                        </button>
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                    </table>
+                </div>
+                )}
             </div>
+
+            {/* Modales */}
+            {showProductModal && (
+                <ProductModal
+                    product={selectedProduct}
+                    isOpen={showProductModal}
+                    onClose={() => setShowProductModal(false)}
+                    onSubmit={selectedProduct ? updateProductMutation.mutateAsync : createProductMutation.mutateAsync}
+                    isLoading={selectedProduct ? updateProductMutation.isLoading : createProductMutation.isLoading}
+                />
             )}
-        </div>
 
-        {/* Modales */}
-        {showProductModal && (
-            <ProductModal
-                product={selectedProduct}
-                isOpen={showProductModal}
-                onClose={() => setShowProductModal(false)}
-                onSubmit={selectedProduct ? updateProductMutation.mutateAsync : createProductMutation.mutateAsync}
-                isLoading={selectedProduct ? updateProductMutation.isLoading : createProductMutation.isLoading}
-            />
-        )}
-
-        {showStockModal && selectedProduct && (
-            <StockAdjustmentModal
-                product={selectedProduct}
-                action={stockAction}
-                isOpen={showStockModal}
-                onClose={() => setShowStockModal(false)}
-                onSubmit={stockAction === 'increment' ? incrementStockMutation.mutateAsync: decrementStockMutation.mutateAsync}
-                isLoading={stockAction === 'increment' ? incrementStockMutation.isLoading : decrementStockMutation.isLoading}
-            />
-        )}
+            {showStockModal && selectedProduct && (
+                <StockAdjustmentModal
+                    product={selectedProduct}
+                    action={stockAction}
+                    isOpen={showStockModal}
+                    onClose={() => setShowStockModal(false)}
+                    onSubmit={(stockAction === 'increment' ? incrementStockMutation.mutateAsync: decrementStockMutation.mutateAsync)}
+                    isLoading={stockAction === 'increment' ? incrementStockMutation.isLoading : decrementStockMutation.isLoading}
+                />
+            )}
         </div>
     );
 };
