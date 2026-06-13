@@ -58,10 +58,8 @@ src/
 
 ### 🎨 Interfaz de Usuario
 - **Diseño moderno** y responsive
-- **Notificaciones** en tiempo real
 - **Estados de carga** y manejo de errores
 - **Navegación intuitiva**
-- **Accesibilidad** optimizada
 
 ## 🛠️ Instalación
 
@@ -76,7 +74,7 @@ cd patito-frontend
 npm install
 ```
 
-3. **Configurar variables de entorno**
+3. **Configurar variables de entorno | crear el archivo .env**
 ```bash
 crear archivo de .env y agregar esto
 # URL base de la API del backend requerido
@@ -104,10 +102,7 @@ npm run dev
 ```bash
 npm run dev          # Servidor de desarrollo
 npm run build        # Build de producción
-npm run preview      # Preview del build
-npm run lint         # Linting del código
 npm run test         # Ejecutar tests
-npm run test:ui      # Tests con interfaz
 ```
 
 ## 🗂️ Componentes Principales
@@ -159,27 +154,12 @@ cancelado → [final] ❌
 - **Navegación adaptiva**: Menú colapsable en móviles
 - **Tablas responsivas**: Scroll horizontal cuando necesario
 
-## 🎨 Sistema de Diseño
-
-### Colores
-- **Primario**: Blue-600 (#2563eb)
-- **Éxito**: Green-600 (#16a34a)
-- **Advertencia**: Yellow-600 (#ca8a04)
-- **Error**: Red-600 (#dc2626)
-- **Grises**: Gray-50 a Gray-900
-
-### Tipografía
-- **Fuente**: Inter (fallback: system fonts)
-- **Tamaños**: text-xs a text-4xl
-- **Pesos**: font-normal, font-medium, font-semibold, font-bold
 
 ## 🚀 Optimizaciones
 
-- **Code splitting** automático por rutas
 - **Lazy loading** de componentes pesados
 - **Caché inteligente** con React Query
 - **Bundle optimizado** con Vite
-- **Tree shaking** automático
 
 ## 🔒 Seguridad
 
@@ -216,14 +196,6 @@ npm run build
 - **Reintento**: 1 vez en caso de error
 - **Invalidación**: Automática después de mutaciones
 
-### Auditoría
-- **Fecha/hora**: ISO string automático
-- **IP del usuario**: Header X-User-IP
-- **Timestamp**: Header X-Timestamp
-
-## 📞 Soporte
-
-Para soporte técnico o preguntas sobre el proyecto, contactar al equipo de desarrollo.
 
 ---
 

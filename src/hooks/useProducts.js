@@ -31,7 +31,7 @@ export const useCreateProduct = () => {
     return useMutation({
         mutationFn: inventoryService.createProduct,
         onSuccess: (data) => {
-            queryClient.invalidateQueries(['products']);
+            queryClient.invalidateQueries(['products']); // para invalidar y refrescar la lista de productos
             dispatch(addNotification({ type: 'success', message: `Producto #${data.hawa} creado exitosamente` }));
             return data;
         },
